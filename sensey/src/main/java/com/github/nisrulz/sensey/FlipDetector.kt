@@ -14,53 +14,44 @@
  * limitations under the License.
  */
 
-package com.github.nisrulz.sensey;
+package com.github.nisrulz.sensey
 
-import android.hardware.SensorEvent;
-
-import static android.hardware.Sensor.TYPE_ACCELEROMETER;
+import android.hardware.Sensor.TYPE_ACCELEROMETER
+import android.hardware.SensorEvent
 
 /**
  * The type Flip detector.
  */
-public class FlipDetector extends SensorDetector {
+class FlipDetector
+/**
+ * Instantiates a new Flip detector.
 
-  private final FlipListener flipListener;
+ * @param flipListener
+ * *     the flip listener
+ */
+(private val flipListener: FlipDetector.FlipListener) : SensorDetector(TYPE_ACCELEROMETER) {
 
-  /**
-   * Instantiates a new Flip detector.
-   *
-   * @param flipListener
-   *     the flip listener
-   */
-  public FlipDetector(FlipListener flipListener) {
-    super(TYPE_ACCELEROMETER);
-    this.flipListener = flipListener;
-  }
-
-  @Override
-  protected void onSensorEvent(SensorEvent sensorEvent) {
-    float z = sensorEvent.values[2];
+  override fun onSensorEvent(sensorEvent: SensorEvent) {
+    val z = sensorEvent.values[2]
     if (z > 9 && z < 10) {
-      flipListener.onFaceUp();
-    }
-    else if (z > -10 && z < -9) {
-      flipListener.onFaceDown();
+      flipListener.onFaceUp()
+    } else if (z > -10 && z < -9) {
+      flipListener.onFaceDown()
     }
   }
 
   /**
    * The interface Flip listener.
    */
-  public interface FlipListener {
+  interface FlipListener {
     /**
      * On face up.
      */
-    void onFaceUp();
+    fun onFaceUp()
 
     /**
      * On face down.
      */
-    void onFaceDown();
+    fun onFaceDown()
   }
 }

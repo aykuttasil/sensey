@@ -15,10 +15,11 @@
  */
 
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
   compileSdkVersion 25
-  buildToolsVersion "24.0.3"
+  buildToolsVersion "25.0.0"
 
   defaultConfig {
     applicationId "com.github.nisrulz.senseysample"
@@ -43,7 +44,7 @@ dependencies {
   testCompile 'junit:junit:4.12'
   compile 'com.android.support:appcompat-v7:25.0.0'
 
-  // compile 'com.github.nisrulz:sensey:1.5.0'
+  compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
   // Module Dependency
   compile project(':sensey')

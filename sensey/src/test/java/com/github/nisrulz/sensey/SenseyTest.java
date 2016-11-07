@@ -40,7 +40,7 @@ public class SenseyTest {
     shadowSensorManager =
         Shadows.shadowOf((SensorManager) context.getSystemService(SENSOR_SERVICE));
 
-    sensey = Sensey.getInstance();
+    sensey = Sensey.Companion.getInstance();
     sensey.init(context);
   }
 
